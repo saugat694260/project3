@@ -3,7 +3,7 @@ import { products } from "../data/products.js";
 import { addedToWishlistButtonColourChange } from "../scripts/mainPage.js";
 
 //this page include the feature of wishlist
-export let wishList = JSON.parse(localStorage.getItem('wishList'))
+export let wishList = []//JSON.parse(localStorage.getItem('wishList'))
 
 
 //this function stores in local storage temporarly so the data will not be lost even after refresh
