@@ -16,6 +16,11 @@ products.forEach((data) => {
   let newHTML = '';
 
   newHTML += `
+  <div class='container'>
+  <button class="wish-list-button js-wish-list-button-${data.id/*for giving unique class name for add to widh list button*/} js-wish-list-button-link"data-product-id="${data.id}">
+
+  <img class="wish-list-icon" src="icons/wishlist.png">
+</button>
 <a class="product-link-to-second-page" href="selectedProductPage.html"><div class="product-container js-product-container-${data.id/*for giving unique class name fir product container */} js-product-container-link"data-product-id="${data.id/*for extracting id of the clicked container */}">
 
 <div class="image-container">
@@ -29,10 +34,7 @@ products.forEach((data) => {
 <div class="options-container">
 
 
-  <button class="wish-list-button js-wish-list-button-${data.id/*for giving unique class name for add to widh list button*/} js-wish-list-button-link"data-product-id="${data.id}">
-
-    <img class="wish-list-icon" src="icons/later.png">
-  </button>
+ 
 
     <p class="product-name-container">${data.title}</p>
     
@@ -51,10 +53,12 @@ products.forEach((data) => {
 </div>
 <span class="ratings-container">${data.ratings.count}/10</span>
 
-</div></a>`
+</div></a></div>`
 
-
-  subProductContainer.innerHTML += newHTML;
+//if this element is present then
+  if(subProductContainer){
+    subProductContainer.innerHTML += newHTML;
+  }
 
 }
 );
@@ -100,13 +104,46 @@ document.querySelectorAll('.js-wish-list-button-link').forEach((link) => {
 
 //changes colour of wishlist buttom
 export function addedToWishlistButtonColourChange(value) {
+ if(subProductContainer){
   const wishListButton = document.querySelector(`.js-wish-list-button-${value}`);
   wishListButton.classList.add('added-To-Wishlist');
+ }
 
 }
 
 
-//
+/**
+ 
+
+//if its array button always put selector all
+document.querySelectorAll('.js-book-mark-button').forEach((link) => {
+
+  const productId = link.dataset.productId;
+
+  const wishListButton = document.querySelector(`.js-book-mark-button`);
+  //uses class list for adding and removing
+  link.addEventListener('click', () => {
+    if (wishListButton.classList.contains('selected-page-added-To-Wishlist')) {
+
+      removeFromWishlist(productId)
+      wishListButton.classList.remove('selected-page-added-To-Wishlist');
+   
+
+    }
+    else {
+      console.log(wishList);
+      addToWishlist(productId)
+
+    }
+
+  });
+})
+export function addedToWishlistSelectedPageButtonColourChange(value) {
+  const wishListButton = document.querySelector(`.js-wish-list-button-${value}`);
+  wishListButton.classList.add('added-To-Wishlist');
+
+}
+ */
 
 
 

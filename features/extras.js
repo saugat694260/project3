@@ -19,7 +19,8 @@ setInterval(() => {
   wishList.forEach((item) => {
     if (item.id) {
 
-      addedToWishlistButtonColourChange(item.id)
+      addedToWishlistButtonColourChange(item.id);
+     
     }
 
   })

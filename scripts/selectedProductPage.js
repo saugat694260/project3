@@ -1,6 +1,7 @@
 import {  products} from "../data/products.js";
-
-const maincontainer=document.querySelector(".selectedProductPage-main-container")
+import { addToWishlist, removeFromWishlist, wishList } from "../features/extras.js";
+const maincontainer=document.querySelector(".selectedProductPage-main-container");
+const wishlistButton=document.querySelector(".js-book-mark-button")
 
 
 let selectedProductArray=JSON.parse(localStorage.getItem('selectedProductArray'));
@@ -101,7 +102,7 @@ selectedProductArray.forEach((data)=>{
   </div>
   
   <div class="book-mark-container">
-    <button class="book-mark-button">
+    <button class="book-mark-button js-book-mark-button .js-book-mark-button-${data.id}" data-product-id=${data.id}>
       <img class="add-to-bookmark-image" src="/icons/wishlist.png">
     </button>
   </div>
@@ -144,6 +145,52 @@ if(maincontainer)
 
 
 
+  
+
+});
+
+//if its array button always put selector all
+document.querySelectorAll('.js-book-mark-button').forEach((link) => {
+
+  const productId = link.dataset.productId;
+
+  const wishListButton = document.querySelector(`.js-book-mark-button`);
+  //uses class list for adding and removing
+  link.addEventListener('click', () => {
+    if (wishListButton.classList.contains('added-To-Wishlist')) {
+
+      removeFromWishlist(productId)
+      wishListButton.classList.remove('added-To-Wishlist');
+   
+
+    }
+    else {
+      console.log(wishList);
+      addToWishlist(productId)
+    
+
+    }
+
+  });
 })
+
+//checks main container if present then runs this
+//adds the colour in button
+if(maincontainer){
+
+  setInterval(() => {
+    wishList.forEach((item) => {
+     if(selectedProductArray[0].id==item.id){
+      const wishListButton = document.querySelector(`.js-book-mark-button`);
+      wishListButton.classList.add('added-To-Wishlist');
+     }
+  
+    })
+  }, 1)
+
+}
+
+
+
 
  
