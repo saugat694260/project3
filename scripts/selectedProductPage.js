@@ -1,40 +1,44 @@
 import {  products} from "../data/products.js";
 
-let maincontainer=document.querySelector(".selectedProductPage-main-container")
+const maincontainer=document.querySelector(".selectedProductPage-main-container")
 
 
 let selectedProductArray=JSON.parse(localStorage.getItem('selectedProductArray'));
 savetostorage();
-console.log(selectedProductArray);
+  //this function stores in local storage temporarly so the data will not be lost even after refresh
+  export function savetostorage() {
+    localStorage.setItem('selectedProductArray', JSON.stringify(selectedProductArray));//name,data 
+  }
+
+
+
+
 //this function takes the id and adds the data for the selected container only
+//takes the data pushes in to in to array and becomes empty again so it can only give one array to new array if itself is not empty ..the new array is stored in local storage so it wont dissapear
 export function selectedProduct(productId){
 
-  
-  let newselectedProductArray=[];
-  products.forEach((data)=>{
+
+let newselectedProductArray=[];
+
+products.forEach((data)=>{
   if(data.id==productId){
-    newselectedProductArray.push(data)
-  if(newselectedProductArray){
-    selectedProductArray=newselectedProductArray;
-    newselectedProductArray=[];
-  }
+  newselectedProductArray.push(data)
+      if(newselectedProductArray){
+        selectedProductArray=newselectedProductArray;
+        newselectedProductArray=[];
+      }
   }
   })
   savetostorage();
-  }
-  
-  //this function stores in local storage temporarly so the data will not be lost even after refresh
-export function savetostorage() {
-  localStorage.setItem('selectedProductArray', JSON.stringify(selectedProductArray));//name,data 
 }
+  
 
+//generating html
 selectedProductArray.forEach((data)=>{
 
   let newHTML=`
   
 
- 
-  
 
   <div class="container">
 
@@ -134,8 +138,10 @@ selectedProductArray.forEach((data)=>{
 
 
   `;
- 
-maincontainer.innerHTML=newHTML;
+ //make sure the dom is present when going to another page else there will be null error
+if(maincontainer)
+  maincontainer.innerHTML=newHTML;
+
 
 
 })
