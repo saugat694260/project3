@@ -1,4 +1,14 @@
 /* products css*/
+.product-link-to-second-page{
+  
+
+text-decoration: none;
+
+}
+ /* changes colour when clicking link*/
+.product-link-to-second-page:visited{
+  color: black;
+}
 .main-container {
   display: flex;
   justify-content: center;

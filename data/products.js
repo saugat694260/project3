@@ -2,6 +2,7 @@ export let products=[
   {
     id:1,
     title:"kung fu",
+    author:"dannelialet",
     image:"/images/018.jpg",
     status:"ongoing",
     genre:"horror",

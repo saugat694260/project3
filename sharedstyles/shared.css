@@ -65,6 +65,18 @@
   .top-more-icon{
   width: 100%;
   height: 100%;
+ 
+  }
+  .top-home-link{
+    height: 50px;
+    display: flex;
+align-items: center;
+text-decoration: none;
+font-weight: bold;
+  }
+  /* changes colour when clicking link*/
+  .top-home-link:visited{
+    color: black;
   }
 
 

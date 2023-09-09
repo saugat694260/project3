@@ -16,7 +16,7 @@ products.forEach((data) => {
   let newHTML = '';
 
   newHTML += `
-<div class="product-container js-product-container-${data.id/*for giving unique class name fir product container */} js-product-container-link"data-product-id="${data.id/*for extracting id of the clicked container */}">
+<a class="product-link-to-second-page" href="selectedProductPage.html"><div class="product-container js-product-container-${data.id/*for giving unique class name fir product container */} js-product-container-link"data-product-id="${data.id/*for extracting id of the clicked container */}">
 
 <div class="image-container">
 
@@ -41,8 +41,6 @@ products.forEach((data) => {
 
 
 <div class="extra-info-container">
-  <span class="status-container">status:${data.status}</span>
-<br>
 <span class="genre-container">
   genre:${data.genre}
 </span>
@@ -53,7 +51,7 @@ products.forEach((data) => {
 </div>
 <span class="ratings-container">${data.ratings.count}/10</span>
 
-</div>`
+</div></a>`
 
 
   subProductContainer.innerHTML += newHTML;
