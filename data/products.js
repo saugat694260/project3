@@ -179,7 +179,27 @@ chapterStory:
       chapterName:"kunfu",
       chapterStory:
       "today i met a bitch who was rich"
-      }
+      },
+      {chapterNumber:2,
+        chapterName:"kunfu",
+        chapterStory:
+        "today i met a bitch who was rich"
+        },
+        {chapterNumber:3,
+          chapterName:"kunfu",
+          chapterStory:
+          "today i met a bitch who was rich"
+          },
+          {chapterNumber:4,
+            chapterName:"kunfu",
+            chapterStory:
+            "today i met a bitch who was rich"
+            },
+            {chapterNumber:5,
+              chapterName:"kunfu",
+              chapterStory:
+              "today i met a bitch who was rich"
+              }
       
           ],
     ratings:{

@@ -202,11 +202,13 @@ const chapterNumber=link.dataset.chapterNumber;
 link.addEventListener('click',()=>{
   selectedChapter(chapterNumber)
 
-productchapters(selectedProductArray[0].chapters);
+  productchapters(selectedProductArray[0].chapters);
+
 })
 
 
 })
+
 
 
 
