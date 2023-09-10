@@ -1,4 +1,4 @@
-console.log('hi');
+
 
 import {selectedProductArray} from "./selectedProductPage.js";
 
@@ -6,49 +6,21 @@ import {selectedProductArray} from "./selectedProductPage.js";
 
 //chapter-content
 const chapterContainer=document.querySelector(".chapter-main-container");
-  //this function stores in local storage temporarly so the data will not be lost even after refresh
   
   const nextButton=document.querySelector(".next-button");
   const previousButton=document.querySelector(".previous-button");
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let chaptersArray=JSON.parse(localStorage.getItem('chaptersArray'));
-let convertedArray=Object.values(chaptersArray);
 let i=localStorage.getItem('i');
 savetostorage();
 
-
+//to store in local storage
 export function savetostorage() {
-  localStorage.setItem('chaptersArray', JSON.stringify(chaptersArray));
-  localStorage.setItem('i',i-1);//name,data 
+  localStorage.setItem('chaptersArray', JSON.stringify(chaptersArray));//name,data  this is for saving strings
+  localStorage.setItem('i',i);//this is for saving integers
 }
-console.log(i);
-
-
-
-
-
+//this function stores all the chapters of product
 export function productchapters(chapters){
 
   let newchapters=[];
@@ -65,54 +37,48 @@ export function productchapters(chapters){
     
 }
 
-
-console.log(chaptersArray[0].chapterNumber);
-
-
-
-
-
-
-
-
-
-
-console.log(i);
+//this function is for opening the selected page
   export function selectedChapter(chapterNumber){
   
 console.log(chapterNumber);
-   
+let temp;
 
-       i=chapterNumber;
-       console.log(i);
-        savetostorage();
-      
+ temp=chapterNumber-1;
+    if(temp){
+      i=temp;
+      temp;
+    }
+    if(temp==0){
+      i=0;
+      temp;
+    }
+    
+    
+
+savetostorage();
+
    }
-
   ;
  
 
-//the page that you see first
-//defaultValue();
 
 
-
-  
+  //this condition is here cause this only run if the element is present
 
 if(chapterContainer){
 
   nextButton.addEventListener('click',()=>{
 
-
+//next chapter button
     if(i==chaptersArray.length-1){
-    i=chaptersArray.length-1;
+        i=chaptersArray.length-1;
     }
     else{
-      i++;
-      right();
+        i++;
+        changeHtml();
     }
     savetostorage();
-  }
+    }
 
   );
  
@@ -120,56 +86,41 @@ if(chapterContainer){
   previousButton.addEventListener('click',()=>{
   
   
-      if(i==0){
+    if(i==0){
       i=0;
-  }
-  else{
-    i--;
-    left()
-  }
+    }
+    else{
+      i--;
+      changeHtml();
+    }
   savetostorage();
  } );
  
 
 }
 
-//handles all right logic
-function right(){
-  chapterContainer.innerHTML=`<div class="chapter-sub-container">
-    
-  <p class="chapter-title">${chaptersArray[i].chapterNumber} .${chaptersArray[i].chapterName}</p>
-  <p class="chapter-content">${chaptersArray[i].chapterStory}</p>
 
-</div>
-`;
-  
 
-}
 
-//handles all left logic
-function left(){
-  chapterContainer.innerHTML=`<div class="chapter-sub-container">
-    
-  <p class="chapter-title">${chaptersArray[i].chapterNumber} .${chaptersArray[i].chapterName}</p>
-  <p class="chapter-content">${chaptersArray[i].chapterStory}</p>
-
-</div>
-`
-
-savetostorage();
-}
 
 if(chapterContainer){
-  chapterContainer.innerHTML=`<div class="chapter-sub-container">
-    
-  <p class="chapter-title">${chaptersArray[i].chapterNumber} .${chaptersArray[i].chapterName}</p>
-  <p class="chapter-content">${chaptersArray[i].chapterStory}</p>
-  
-  </div>`
-
-  //creates dots on the length of array
+  changeHtml();//opening page
 }
-  //first thing you see on page
+
+//changes html accordingingly changed i
+  function changeHtml(){
+    chapterContainer.innerHTML=`<div class="chapter-sub-container">
+      
+    <p class="chapter-title">${chaptersArray[i].chapterNumber} .${chaptersArray[i].chapterName}</p>
+    <p class="chapter-content">${chaptersArray[i].chapterStory}</p>
+  
+  </div>
+  `;
+   
+  
+  }
+
+  
 
 
 
