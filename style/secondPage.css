@@ -109,7 +109,7 @@ margin-left: 8px;
 /* right container*/
 .image{
   width: 100%;
-  height: 80%;
+  height: 115%;
   text-align: center;
   margin-top: 50px
 
@@ -120,6 +120,7 @@ margin-left: 8px;
   filter: drop-shadow(100px 100px 100px white) 
 }
 .options-container{
+
  display: flex;
   justify-content: center;
   
@@ -154,7 +155,6 @@ width: 30%;
 
 
 }
-
 .share-button{
  
 }

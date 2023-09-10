@@ -6,7 +6,20 @@ export let products=[
     image:"/images/018.jpg",
     status:"ongoing",
     genre:"horror",
-    chapters:1,
+    chapters:[
+{chapterNumber:1,
+chapterName:"kunfu",
+chapterStory:
+"today i met a bitch who was rich"
+},
+{chapterNumber:2,
+  chapterName:"lol",
+  chapterStory:
+  "today i met a bitch who was rich wo wo"
+  }
+
+    ],
+   
     ratings:{
       rank:1,
       count:3
@@ -26,7 +39,14 @@ export let products=[
     author:"dannelialet",
     status:"ongoing",
     genre:"horror",
-    chapters:2,
+    chapters:[
+      {chapterNumber:1,
+      chapterName:"kunfu",
+      chapterStory:
+      "today i met a bitch who was rich"
+      }
+      
+          ],
     ratings:{
       rank:1,
       count:3
@@ -46,7 +66,14 @@ export let products=[
     author:"morning",
     status:"ongoing",
     genre:"horror",
-    chapters:3,
+    chapters:[
+      {chapterNumber:1,
+      chapterName:"kunfu",
+      chapterStory:
+      "today i met a bitch who was rich"
+      }
+      
+          ],
     ratings:{
       rank:1,
       count:3
@@ -66,7 +93,14 @@ export let products=[
     author:"kaido",
     status:"ongoing",
     genre:"horror",
-    chapters:8,
+    chapters:[
+      {chapterNumber:1,
+      chapterName:"kunfu",
+      chapterStory:
+      "today i met a bitch who was rich"
+      }
+      
+          ],
     description:"this story isfuka ka",
     ratings:{
       rank:1,
@@ -86,7 +120,14 @@ export let products=[
     author:"novacane",
     status:"ongoing",
     genre:"horror",
-    chapters:9,
+    chapters:[
+      {chapterNumber:1,
+      chapterName:"kunfu",
+      chapterStory:
+      "today i met a bitch who was rich"
+      }
+      
+          ],
     ratings:{
       rank:1,
       count:3
@@ -106,7 +147,14 @@ export let products=[
     author:"damn dannel",
     status:"ongoing",
     genre:"horror",
-    chapters:18,
+    chapters:[
+      {chapterNumber:1,
+      chapterName:"kunfu",
+      chapterStory:
+      "today i met a bitch who was rich"
+      }
+      
+          ],
     ratings:{
       rank:1,
       count:3
@@ -126,32 +174,18 @@ export let products=[
     author:"dannel",
     status:"ongoing",
     genre:"horror",
-    chapters:0,
+    chapters:[
+      {chapterNumber:1,
+      chapterName:"kunfu",
+      chapterStory:
+      "today i met a bitch who was rich"
+      }
+      
+          ],
     ratings:{
       rank:1,
       count:3
     },
-    description:"this story is writen byy your damn!",
-    keywords: [
-      "socks",
-      "sports",
-      "apparel"
-    ]
-
-  },
-  {
-    id:8,
-    title:"kore de sode",
-    image:"/images/AIH_DIO (1).png",
-    author:"dannel",
-    status:"ongoing",
-    genre:"horror",
-    chapters:0,
-    ratings:{
-      rank:1,
-      count:3
-    },
-    price:20,
     description:"this story is writen byy your damn!",
     keywords: [
       "socks",
@@ -160,7 +194,6 @@ export let products=[
     ]
 
   }
-  
 ]
 products.forEach((data)=>{
 

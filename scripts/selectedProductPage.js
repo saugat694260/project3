@@ -1,8 +1,8 @@
 import {  products} from "../data/products.js";
 import { addToWishlist, removeFromWishlist, wishList } from "../features/extras.js";
-const maincontainer=document.querySelector(".selectedProductPage-main-container");
-const wishlistButton=document.querySelector(".js-book-mark-button")
-
+const maincontainer=document.querySelector(".selectedProductPage-upper-container");
+const wishlistButton=document.querySelector(".js-book-mark-button");//
+let chapterList=document.querySelector(".chapter-list");
 
 let selectedProductArray=JSON.parse(localStorage.getItem('selectedProductArray'));
 savetostorage();
@@ -63,7 +63,7 @@ selectedProductArray.forEach((data)=>{
   
     <div class="about-product-container">
       <p class="genre-text">Genre:${data.genre}</p>
-      <p class="chapters-number-text">chapters: ${data.chapters}</p>
+      <p class="chapters-number-text">chapters:fuck</p>
     </div>
   
     <div class="ratings-container">
@@ -116,38 +116,43 @@ selectedProductArray.forEach((data)=>{
   
   
   
-  
-  <div class="sub-container">
-  
-    <div class="chapter-container">
-      <p class="text-chapter">Chapters</p>
-      <div class="chapter-list">
-        <p class="chapters">Chapter 1: go go power</p>
-        <p class="chapters">Chapter 1: go go power</p>
-        <p class="chapters">Chapter 1: go go power</p>
-      </div>
-  
-    </div>
-  <div class="reviews-container">
-  <p class="text-review">
-    reviews
-  </p>
-  
-  </div>
-  
-  </div>
+ 
 
 
   `;
+  console.log(data.chapters);
  //make sure the dom is present when going to another page else there will be null error
-if(maincontainer)
+if(maincontainer){
   maincontainer.innerHTML=newHTML;
 
 
 
+
+
+
+//chapter list html
+
+data.chapters.forEach((data)=>{
+
+  let chapterHtml='';
+  chapterHtml+=`
   
+  <p class="chapters">Chapter ${data.chapterNumber}: ${data.chapterName}</p>
+       
+  
+  `;
+  //had to use this beacouse the div which i wanted to add to was object
+  chapterList.insertAdjacentHTML( 'beforeend',chapterHtml);
 
 });
+
+
+}; 
+
+});
+
+//lower container
+
 
 //if its array button always put selector all
 document.querySelectorAll('.js-book-mark-button').forEach((link) => {
