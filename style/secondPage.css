@@ -204,6 +204,7 @@ right: 0;
   font-size: 20px;
   padding: 16px;
   border-bottom: 1px solid black;
+  cursor: pointer;
 }
 .text-review{
 

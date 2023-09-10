@@ -1,10 +1,12 @@
 import {  products} from "../data/products.js";
 import { addToWishlist, removeFromWishlist, wishList } from "../features/extras.js";
+import { selectedChapter,productchapters } from "./chapterPage.js";
+
 const maincontainer=document.querySelector(".selectedProductPage-upper-container");
 const wishlistButton=document.querySelector(".js-book-mark-button");//
 let chapterList=document.querySelector(".chapter-list");
 
-let selectedProductArray=JSON.parse(localStorage.getItem('selectedProductArray'));
+export let selectedProductArray=JSON.parse(localStorage.getItem('selectedProductArray'));
 savetostorage();
   //this function stores in local storage temporarly so the data will not be lost even after refresh
   export function savetostorage() {
@@ -63,7 +65,7 @@ selectedProductArray.forEach((data)=>{
   
     <div class="about-product-container">
       <p class="genre-text">Genre:${data.genre}</p>
-      <p class="chapters-number-text">chapters:fuck</p>
+      <p class="chapters-number-text">chapters:${data.chapters.length}</p>
     </div>
   
     <div class="ratings-container">
@@ -120,7 +122,6 @@ selectedProductArray.forEach((data)=>{
 
 
   `;
-  console.log(data.chapters);
  //make sure the dom is present when going to another page else there will be null error
 if(maincontainer){
   maincontainer.innerHTML=newHTML;
@@ -137,7 +138,7 @@ data.chapters.forEach((data)=>{
   let chapterHtml='';
   chapterHtml+=`
   
-  <p class="chapters">Chapter ${data.chapterNumber}: ${data.chapterName}</p>
+  <a href="/chapter.html"><p class="chapters  js-chapter-${data.chapterNumber}" data-chapter-number="${data.chapterNumber}">Chapter ${data.chapterNumber}: ${data.chapterName}</p></a>
        
   
   `;
@@ -145,8 +146,6 @@ data.chapters.forEach((data)=>{
   chapterList.insertAdjacentHTML( 'beforeend',chapterHtml);
 
 });
-
-
 }; 
 
 });
@@ -194,6 +193,27 @@ if(maincontainer){
   }, 1)
 
 }
+//chapters
+
+document.querySelectorAll('.chapters').forEach((link)=>{
+
+const chapterNumber=link.dataset.chapterNumber;
+
+link.addEventListener('click',()=>{
+  selectedChapter(chapterNumber)
+
+productchapters(selectedProductArray[0].chapters);
+})
+
+
+})
+
+
+
+
+
+
+
 
 
 
