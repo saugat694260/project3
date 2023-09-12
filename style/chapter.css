@@ -1,0 +1,34 @@
+
+.chapter-main-container{
+  padding: 64px;
+  padding-top: 8px;
+}
+.chapter-title,.chapter-content,.buttons-container{
+  display: flex;
+  align-items:center;
+   
+   justify-content: center;
+}
+.chapter-title{
+  font-size: 100px;
+ 
+}
+.chapter-content{
+  font-size: 20px;
+ 
+
+ 
+}
+.buttons-container{
+  margin-top: 24px;
+}
+.previous-button,.next-button{
+  font-size: 18px;
+  padding: 8px;
+  margin: 8px;
+  width: 100px;
+  display: none;
+}
+.next-button{
+
+}

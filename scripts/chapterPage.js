@@ -5,7 +5,9 @@ import {selectedProductArray} from "./selectedProductPage.js";
 
 
 //chapter-content
-const chapterContainer=document.querySelector(".chapter-main-container");
+const chaptermainContainer=document.querySelector(".chapter-main-container");
+const chapterTitleContainer=document.querySelector(".chapter-title-container");
+const chapterPageContainer=document.querySelector(".chapter-page-container");
   
   const nextButton=document.querySelector(".next-button");
   const previousButton=document.querySelector(".previous-button");
@@ -40,7 +42,7 @@ export function productchapters(chapters){
 //this function is for opening the selected page
   export function selectedChapter(chapterNumber){
   
-console.log(chapterNumber);
+
 let temp;
 
  temp=chapterNumber-1;
@@ -65,7 +67,7 @@ savetostorage();
 
   //this condition is here cause this only run if the element is present
 
-if(chapterContainer){
+if(chaptermainContainer){
 
   nextButton.addEventListener('click',()=>{
 
@@ -76,6 +78,7 @@ if(chapterContainer){
     else{
         i++;
         changeHtml();
+        buttonVisiblity();
     }
     savetostorage();
     }
@@ -92,6 +95,7 @@ if(chapterContainer){
     else{
       i--;
       changeHtml();
+      buttonVisiblity();
     }
   savetostorage();
  } );
@@ -103,26 +107,48 @@ if(chapterContainer){
 
 
 
-if(chapterContainer){
+if(chaptermainContainer){
   changeHtml();//opening page
 }
 
 //changes html accordingingly changed i
   function changeHtml(){
-    chapterContainer.innerHTML=`<div class="chapter-sub-container">
+    chapterTitleContainer.innerHTML=`<div class="chapter-sub-container"><br>
       
     <p class="chapter-title">${chaptersArray[i].chapterNumber} .${chaptersArray[i].chapterName}</p>
-    <p class="chapter-content">${chaptersArray[i].chapterStory}</p>
   
   </div>
   `;
+  chapterPageContainer.innerHTML=`
+  <p class="chapter-content">${chaptersArray[i].chapterStory}</p>`
+
    
   
   }
 
-  
+ if(chaptermainContainer){
+  buttonVisiblity();
+ }
 
+function buttonVisiblity(){
 
+if(i>0){
+  previousButton.style.display="initial"
+
+}
+else{
+  previousButton.style.display="none"
+}
+
+if(i<chaptersArray.length-1){
+  nextButton.style.display="initial"
+}
+else{
+  nextButton.style.display="none"
+
+}
+
+}
 
 
 

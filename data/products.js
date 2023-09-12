@@ -178,7 +178,17 @@ chapterStory:
       {chapterNumber:1,
       chapterName:"kunfu",
       chapterStory:
-      "today i met a bitch who was rich"
+     `In 1995 three mothers decided to harness the new power of the internet to provide an alternative to the negative mass media. The MY HERO website was launched with a mission to use media, art and technology to celebrate the best of humanity. Its mission today is more relevant than ever. As a commercial-free, child-friendly destination, MY HERO embodies the best of what the internet can be. Today the website reaches millions of students of all ages around the world and serves teachers globally.
+
+     The current crisis our nation is experiencing, with hate crimes on the rise and continued racial injustice and inequity, underscores the pressing need to acknowledge and celebrate diversity, to honor those working for human rights and to champion the values we hold dear.
+     
+     Today, the media programs MY HERO offers educate and inspire youth to understand their own ability to create a more just, equitable, and peaceful world. Learning about the heroic journeys of well-known leaders like Nelson Mandela, Congressman John Lewis, Ruth Bader Ginsberg, Wangari Maathai and others helps students understand that positive change in this complex and challenging time is truly possible.
+     
+     Teachers in K-12 and college use MY HERO to support emotional and social learning for students of all ages. ESL teachers use MY HERO for language studies and character education. Every submission is reviewed by staff to make sure it is appropriate and does not promote hatred, racism, sexism or violence.
+     
+     MY HERO promotes digital literacy, critical thinking and media arts education. We mentor teachers, students and others who want to learn to use media and technology to share their hero stories. Our staff also supports and trains teachers who use our online tools. To encourage and reward creativity and self-expression, we award prizes to students and professionals for outstanding films, art, essays and music.
+     
+     It is especially rewarding in these difficult times to see students of all faiths and from diverse backgrounds utilizing MY HEROs resources as we continue to meet the growing need to educate and inspire future heroes.`
       },
       {chapterNumber:2,
         chapterName:"kunfu",
