@@ -141,7 +141,7 @@ width: 30%;
 .book-mark-container{
 
 }
-.add-to-favourite-button,.share-button,.book-mark-button{
+.favourite-button,.share-button,.book-mark-button{
   width: 50px;
   height: 50px;
   background-color: transparent;

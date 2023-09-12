@@ -79,6 +79,7 @@ chapterStory:
       count:3
     },
     description:"this story is khishi shi",
+    priceCents:3000,
     keywords: [
       "socks",
       "sports",
@@ -133,6 +134,7 @@ chapterStory:
       count:3
     },
     description:"this story is writen sick monkey",
+
     keywords: [
       "socks",
       "sports",
@@ -147,6 +149,7 @@ chapterStory:
     author:"damn dannel",
     status:"ongoing",
     genre:"horror",
+    
     chapters:[
       {chapterNumber:1,
       chapterName:"kunfu",
@@ -160,6 +163,7 @@ chapterStory:
       count:3
     },
     description:"this story is writen wororo",
+    priceCents:20000,
     keywords: [
       "socks",
       "sports",
@@ -225,10 +229,29 @@ chapterStory:
 
   }
 ]
-products.forEach((data)=>{
 
-if(data.price){
-  console.log('hi');
+//to randomize the product
+/**
+ * 
+ * //for shuffeling the products
+function shuffle(products) {
+  let currentIndex = products.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [products[currentIndex],products[randomIndex]] = [
+      products[randomIndex], products[currentIndex]];
+  }
+
+  return products;
 }
+console.log(products);
 
-});
+shuffle(products);
+ */

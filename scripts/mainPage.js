@@ -1,7 +1,7 @@
 import { products } from "../data/products.js";
 import { selectedProduct } from "./selectedProductPage.js";
 import { addToWishlist, removeFromWishlist, savetostorage, wishList } from "../features/extras.js";
-import { extractDataFromIdForAdding, extractDataFromIdForRemoving } from "../utils/utils.js";
+import { extractDataFromIdForAdding, extractDataFromIdForRemoving ,formatCurrency} from "../utils/utils.js";
 //
 
 const subProductContainer = document.querySelector('.sub-product-container');
@@ -17,14 +17,19 @@ products.forEach((data) => {
 
   newHTML += `
   <div class='container'>
+
+
+
   <button class="wish-list-button js-wish-list-button-${data.id/*for giving unique class name for add to widh list button*/} js-wish-list-button-link"data-product-id="${data.id}">
 
   <img class="wish-list-icon" src="icons/wishlist.png">
 </button>
+
+
 <a class="product-link-to-second-page" href="selectedProductPage.html"><div class="product-container js-product-container-${data.id/*for giving unique class name fir product container */} js-product-container-link"data-product-id="${data.id/*for extracting id of the clicked container */}">
 
 <div class="image-container">
-
+<div class="price-Container js-price-container-${data.id}"></div>
     <img class="product-image" src="${data.image}">
     
     <span class="rank-container">#${data.ratings.rank}</span>
@@ -42,16 +47,16 @@ products.forEach((data) => {
 </div>
 
 
-<div class="extra-info-container">
-<span class="genre-container">
+<div class="extra-info-container" >
+<span class="genre-container ">
   genre:${data.genre}
 </span>
 <br>
-  <span class="chapters-container">chapters:${data.chapters}</span>
+  <span class="author-container">author:${data.author}</span>
   
   
 </div>
-<span class="ratings-container">${data.ratings.count}/10</span>
+<span class="ratings-container js-rating-container-${data.id}">${data.ratings.count}/10</span>
 
 </div></a></div>`
 
@@ -63,10 +68,30 @@ products.forEach((data) => {
 }
 );
 
+if(subProductContainer){
+  createPrices();
+}
+//js-price-Container
+//shows price on the product 
+function createPrices(){
+  products.forEach((data)=>{
+  
+    if(data.priceCents){
+      console.log(data.id);
+      const priceContainer=document.querySelector(`.js-price-container-${data.id}`);
+  priceContainer.innerHTML=`Price:${formatCurrency(data.priceCents)}$`
+  priceContainer.classList.add('js-price-Container')
+  
+    }
+  })
+}
+
+
 
 //this is for getting id from clicked container and sending the id in to function to selectedproductpage.js
 document.querySelectorAll('.js-product-container-link').forEach((link) => {
 
+  
   const productId = link.dataset.productId;
   link.addEventListener('click', () => {
     selectedProduct(productId);
@@ -79,6 +104,8 @@ document.querySelectorAll('.js-product-container-link').forEach((link) => {
 document.querySelectorAll('.js-wish-list-button-link').forEach((link) => {
 
   const productId = link.dataset.productId;
+
+
 
   const wishListButton = document.querySelector(`.js-wish-list-button-${productId}`);
   //uses class list for adding and removing
@@ -102,7 +129,7 @@ document.querySelectorAll('.js-wish-list-button-link').forEach((link) => {
 
 
 
-//changes colour of wishlist buttom
+//changes colour of wishlist buttom 
 export function addedToWishlistButtonColourChange(value) {
  if(subProductContainer){
   const wishListButton = document.querySelector(`.js-wish-list-button-${value}`);

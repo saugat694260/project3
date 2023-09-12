@@ -1,5 +1,10 @@
 
 import {  products} from "../data/products.js";
+
+//double digit haru banauna garne functon
+export function formatCurrency(priceCents) {
+  return(priceCents/100).toFixed(2);
+}
 //wishlist from extra.js
 //they are similar but i had to do it differently cause i had tp add seprately in button
 //extracts the data from product id from main page 

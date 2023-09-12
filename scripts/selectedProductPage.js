@@ -1,11 +1,15 @@
 import {  products} from "../data/products.js";
-import { addToWishlist, removeFromWishlist, wishList } from "../features/extras.js";
+import { addToWishlist, removeFromWishlist, wishList,addToFavourite,removeFromFavourite,favourite } from "../features/extras.js";
 import { selectedChapter,productchapters } from "./chapterPage.js";
 
 const maincontainer=document.querySelector(".selectedProductPage-upper-container");
-const wishlistButton=document.querySelector(".js-book-mark-button");//
 let chapterList=document.querySelector(".chapter-list");
 
+
+
+
+
+//selected product array
 export let selectedProductArray=JSON.parse(localStorage.getItem('selectedProductArray'));
 savetostorage();
   //this function stores in local storage temporarly so the data will not be lost even after refresh
@@ -91,7 +95,7 @@ selectedProductArray.forEach((data)=>{
     <div class="options-container">
   
   <div class="add-to-favourite-container">
-  <button class="add-to-favourite-button">
+  <button class="favourite-button js-favourite-button " data-product-id=${data.id}>
     <img class="add-to-favourite-image" src="/icons/favourite.png">
   </button>
   
@@ -104,7 +108,7 @@ selectedProductArray.forEach((data)=>{
   </div>
   
   <div class="book-mark-container">
-    <button class="book-mark-button js-book-mark-button .js-book-mark-button-${data.id}" data-product-id=${data.id}>
+    <button class="book-mark-button js-book-mark-button " data-product-id=${data.id}>
       <img class="add-to-bookmark-image" src="/icons/wishlist.png">
     </button>
   </div>
@@ -153,7 +157,37 @@ data.chapters.forEach((data)=>{
 
 
 
+//button click function of select product pge favourite button
+document.querySelectorAll('.js-favourite-button').forEach((link) => {
+
+  const productId = link.dataset.productId;
+
+  const favouriteButton = document.querySelector(`.js-favourite-button`);
+  //uses class list for adding and removing
+  link.addEventListener('click', () => {
+    if (favouriteButton.classList.contains('added-To-Favourite')) {
+
+      removeFromFavourite(productId)
+      favouriteButton.classList.remove('added-To-Favourite');
+   
+
+    }
+    else {
+     
+      addToFavourite(productId)
+    console.log(favourite);
+
+    }
+
+  });
+})
+
+
+
+
 //if its array button always put selector all
+
+//button click function of select product pge bookmark button
 document.querySelectorAll('.js-book-mark-button').forEach((link) => {
 
   const productId = link.dataset.productId;
@@ -190,9 +224,17 @@ if(maincontainer){
      }
   
     })
+    favourite.forEach((item) => {
+      if(selectedProductArray[0].id==item.id){
+       const favouriteButton = document.querySelector(`.js-favourite-button`);
+       favouriteButton.classList.add('added-To-Favourite');
+      }
+   
+     })
   }, 1)
 
 }
+//
 //chapters
 
 document.querySelectorAll('.chapters').forEach((link)=>{

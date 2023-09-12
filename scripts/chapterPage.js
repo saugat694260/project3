@@ -130,6 +130,7 @@ if(chaptermainContainer){
   buttonVisiblity();
  }
 
+ //this function handles the button visibility when reaching ed or start
 function buttonVisiblity(){
 
 if(i>0){
