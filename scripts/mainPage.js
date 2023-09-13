@@ -1,7 +1,7 @@
 import { products } from "../data/products.js";
 import { selectedProduct } from "./selectedProductPage.js";
-import { addToWishlist, removeFromWishlist, savetostorage, wishList } from "../features/extras.js";
-import { extractDataFromIdForAdding, extractDataFromIdForRemoving ,formatCurrency} from "../utils/utils.js";
+import { addToWishlist, removeFromWishlist, savetostorage, wishList } from "../features/sideBarItems.js";
+import { extractDataFromIdForAdding, extractDataFromIdForRemoving, formatCurrency } from "../utils/utils.js";
 //
 
 const subProductContainer = document.querySelector('.sub-product-container');
@@ -60,28 +60,28 @@ products.forEach((data) => {
 
 </div></a></div>`
 
-//if this element is present then
-  if(subProductContainer){
+  //if this element is present then
+  if (subProductContainer) {
     subProductContainer.innerHTML += newHTML;
   }
 
 }
 );
 
-if(subProductContainer){
+if (subProductContainer) {
   createPrices();
 }
 //js-price-Container
 //shows price on the product 
-function createPrices(){
-  products.forEach((data)=>{
-  
-    if(data.priceCents){
-      console.log(data.id);
-      const priceContainer=document.querySelector(`.js-price-container-${data.id}`);
-  priceContainer.innerHTML=`Price:${formatCurrency(data.priceCents)}$`
-  priceContainer.classList.add('js-price-Container')
-  
+function createPrices() {
+  products.forEach((data) => {
+
+    if (data.priceCents) {
+
+      const priceContainer = document.querySelector(`.js-price-container-${data.id}`);
+      priceContainer.innerHTML = `Price:${formatCurrency(data.priceCents)}$`
+      priceContainer.classList.add('js-price-Container')
+
     }
   })
 }
@@ -91,7 +91,7 @@ function createPrices(){
 //this is for getting id from clicked container and sending the id in to function to selectedproductpage.js
 document.querySelectorAll('.js-product-container-link').forEach((link) => {
 
-  
+
   const productId = link.dataset.productId;
   link.addEventListener('click', () => {
     selectedProduct(productId);
@@ -118,7 +118,6 @@ document.querySelectorAll('.js-wish-list-button-link').forEach((link) => {
 
     }
     else {
-      console.log(wishList);
       addToWishlist(productId)
 
     }
@@ -131,10 +130,10 @@ document.querySelectorAll('.js-wish-list-button-link').forEach((link) => {
 
 //changes colour of wishlist buttom 
 export function addedToWishlistButtonColourChange(value) {
- if(subProductContainer){
-  const wishListButton = document.querySelector(`.js-wish-list-button-${value}`);
-  wishListButton.classList.add('added-To-Wishlist');
- }
+  if (subProductContainer) {
+    const wishListButton = document.querySelector(`.js-wish-list-button-${value}`);
+    wishListButton.classList.add('added-To-Wishlist');
+  }
 
 }
 

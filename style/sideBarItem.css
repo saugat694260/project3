@@ -1,0 +1,47 @@
+.wishlist-main-container{
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+.wishlist-sub-container{
+  background-color: blueviolet;
+  width: 60%;
+  position: relative;
+}
+.wishlist-remove-button{
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+.remove-from-wishlist-image{
+
+  width: 100%;
+  height: 100%;
+}
+.wishlist-product-container{
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.wishlist-image-container{
+  width: 40%;
+  background-color: wheat;
+  height: 100%;
+
+}
+.wishlist-product-image{
+  width: 100%;
+  height: 100%;
+}
+.wishlist-info-container{
+width: 60%;
+height: 100%;
+text-align: center;
+}
