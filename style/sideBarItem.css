@@ -1,3 +1,4 @@
+/* wishlist*/
 .wishlist-main-container{
 
 display: flex;
@@ -44,4 +45,48 @@ justify-content: center;
 width: 60%;
 height: 100%;
 text-align: center;
+}
+/*favourites*/
+.favourites-main-container{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.favourites-sub-container{
+  display: flex;
+}
+.favourites-product-container{
+  position: relative;
+  margin: 50px;
+}
+.favourite-products{
+
+  width: 300px;
+  background-color: pink;
+  height: 350px;
+
+}
+.favourite-image-container{
+  width: 100%;
+  background-color: rebeccapurple;
+  height: 70%;
+}
+.favourite-product-image{
+width: 100%;
+height: 100%;
+}
+.author-name{
+  text-align: center;
+}
+.remove-from-favourite-button{
+  position: absolute;
+  width: 50px;
+  height: 45px;
+  bottom: 0px;
+  left: 40%;
+}
+.remove-from-favourite-image{
+  width: 100%;
+  height: 100%;
 }

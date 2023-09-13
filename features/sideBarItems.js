@@ -31,6 +31,13 @@ setInterval(() => {
 
 
 
+
+
+
+//wishlist
+
+
+
 ////includes function of adding and removing of id in wishlist
 //it takes idfrom selected product page
 export function addToWishlist(productId) {
@@ -147,6 +154,12 @@ selectedProduct(productId);
 
 
 
+
+//favourites
+
+
+
+
 //add to favoutite part i could use same function but now this will be east to understand
 //includes function of adding and removing of id in favourites
 //it takes idfrom selected product page
@@ -184,6 +197,91 @@ export function removeFromFavourite(productId) {
   favourite = newFavourite;
   savetostorage();
 }
+
+//generating html for favourites
+let favouriteProductContainer=document.querySelector('.favourites-sub-container');
+
+ 
+products.forEach((data)=>{
+
+  favourite.forEach((value)=>{
+
+    if(data.id==value.id){
+        
+        let html=''
+                  html+=`
+                  <div class="favourites-product-container js-favourites-product-container${data.id}" data-product-id=${data.id}>
+                  <a class="" href="/selectedProductPage.html">
+                  <div class="favourite-products">
+                  <div class="favourite-image-container">
+                    <img class="favourite-product-image" src="${data.image}">
+                  </div>
+                  <div class="favourite-product-info">
+                    <p class="author-name">${data.title}</p>
+                  </div>
+                  
+                  </div>
+                  </a>
+                  <button class="remove-from-favourite-button js-remove-from-favourite-button-${data.id}" data-product-id=${data.id}>
+                    <img class="remove-from-favourite-image" src="/icons/favourite.png">
+                  </button>
+                  
+                  </div>`
+  
+  
+      if(favouriteProductContainer){
+  
+        favouriteProductContainer.innerHTML+=html;
+ 
+      }}
+    }) 
+  })
+
+//remove button and action of favourites
+document.querySelectorAll('.remove-from-favourite-button').forEach((link)=>{
+
+
+const productId=link.dataset.productId;
+ 
+    const productHtml=document.querySelector(`.js-favourites-product-container${productId}`)
+
+        link.addEventListener('click',()=>{
+        removeFromFavourite(productId);
+        productHtml.remove();
+
+
+    })
+
+    //colour
+    if(favouriteProductContainer){
+    setInterval(()=>{
+      const removeFromFavouriteButton=document.querySelector(`.js-remove-from-favourite-button-${productId}`);
+      if(favourite){
+        removeFromFavouriteButton.classList.add('added-To-Favourite')
+      }
+    },1)}
+});
+
+
+// this is for giving id of selected product redirects to the secondpage 
+document.querySelectorAll('.favourites-product-container').forEach((link)=>{
+
+  let productId=link.dataset.productId;
+link.addEventListener('click',()=>{
+selectedProduct(productId);
+
+})
+
+
+});
+
+
+
+
+  
+  
+
+
 
 
 
