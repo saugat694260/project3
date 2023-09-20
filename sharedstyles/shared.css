@@ -161,23 +161,76 @@ font-weight: bold;
   .top-profile-button:hover .top-right-profile-button-tool-tip{
   opacity: 1;
   }
+  
+
+  a{
+    text-decoration: none;
+  }
+  a:visited{
+    
+  }
 
   /*left sidebar*/
   .left-sidebar-container{
-    position: absolute;
     top: 50px;
     left: 0px;
-    width: 200px;
-    bottom: 0;
-    background-color: pink;
   }
+
+  @keyframes slide-out-left-sideBar {
+    
+    0%{left: -200px;}
+    100%{left: 0;}
+    
+      }
   /*right side bar*/
   .right-sidebar-container{
-    position: absolute;
-    top: 50px;
+   
     right: 0px;
+  }
+  @keyframes slide-out-right-sideBar {
+    
+    0%{right:-200px;}
+    100%{right: 0}
+    
+      }
+ 
+
+
+  /*both left and right sidebar container*/
+  .left-sidebar-container,.right-sidebar-container{
+    top: 50px;
+    position: fixed;
     width: 200px;
     bottom: 0;
-    background-color: pink;
+    background-color: white;
+    z-index: 999;
+    display: none;
+    border-left: 1px solid rgb(163, 157, 157);
   }
+
   
+  .left-sidebar-sub-container,.right-sidebar-sub-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .item{
+    background-color: white;
+    padding: 4px;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid rgb(192, 190, 190);
+  }
+  .item:hover{
+    background-color: rgba(211, 199, 199, 0.719);
+  }
+  .js-display{
+    display: initial;
+  }
+
+ 
+ 

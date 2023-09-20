@@ -1,18 +1,19 @@
 /* products css*/
-.product-link-to-second-page{
+a{
   
 
 text-decoration: none;
 
 }
  /* changes colour when clicking link*/
-.product-link-to-second-page:visited{
+a:visited{
   color: black;
 }
 .main-container {
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 }
 .container{
   position: relative;
