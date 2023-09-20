@@ -4,8 +4,8 @@ import { addedToWishlistButtonColourChange } from "../scripts/mainPage.js";
 import { selectedProduct } from "../scripts/selectedProductPage.js";
 
 //this page include the feature of wishlist and favourites
-export let wishList = []//JSON.parse(localStorage.getItem('wishList'))
-export let favourite = []//JSON.parse(localStorage.getItem('favourite'))
+export let wishList = JSON.parse(localStorage.getItem('wishList'))
+export let favourite = JSON.parse(localStorage.getItem('favourite'))
 
 
 //this function stores in local storage temporarly so the data will not be lost even after refresh
@@ -217,7 +217,7 @@ products.forEach((data)=>{
                     <img class="favourite-product-image" src="${data.image}">
                   </div>
                   <div class="favourite-product-info">
-                    <p class="author-name">${data.title}</p>
+                    <p class="favourite-product-name">${data.title}</p>
                   </div>
                   
                   </div>
