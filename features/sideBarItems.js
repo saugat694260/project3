@@ -4,8 +4,8 @@ import { addedToWishlistButtonColourChange } from "../scripts/mainPage.js";
 import { selectedProduct } from "../scripts/selectedProductPage.js";
 
 //this page include the feature of wishlist and favourites
-export let wishList = JSON.parse(localStorage.getItem('wishList'))
-export let favourite = JSON.parse(localStorage.getItem('favourite'))
+export let wishList = []//JSON.parse(localStorage.getItem('wishList'))
+export let favourite = []//JSON.parse(localStorage.getItem('favourite'))
 
 
 //this function stores in local storage temporarly so the data will not be lost even after refresh
@@ -23,7 +23,7 @@ setInterval(() => {
     if (item.id) {
 
       addedToWishlistButtonColourChange(item.id);
-     
+
     }
 
   })
@@ -54,7 +54,7 @@ export function addToWishlist(productId) {
 
 
   if (!matchingItem) {
-    wishList.push({ id: productId});
+    wishList.push({ id: productId });
   }
   savetostorage();
 
@@ -80,17 +80,17 @@ export function removeFromWishlist(productId) {
 
 
 //generating html for wishlist
-let wishlistProductContainer=document.querySelector('.wishlist-sub-container');
+let wishlistProductContainer = document.querySelector('.wishlist-sub-container');
 
- 
-products.forEach((data)=>{
 
-  wishList.forEach((value)=>{
+products.forEach((data) => {
 
-    if(data.id==value.id){
-        
-        let html=''
-                  html+=`
+  wishList.forEach((value) => {
+
+    if (data.id == value.id) {
+
+      let html = ''
+      html += `
       <div class="wishlist-container js-wishlist-container-${data.id}">
   <button class="wishlist-remove-button " data-product-id=${data.id}>
   <img class="remove-from-wishlist-image" src="/icons/close.png">
@@ -112,45 +112,46 @@ products.forEach((data)=>{
   </a>
   
   </div>`
-  
-  
-      if(wishlistProductContainer){
-  
-        wishlistProductContainer.innerHTML+=html;
- 
-      }}
-    }) 
+
+
+      if (wishlistProductContainer) {
+
+        wishlistProductContainer.innerHTML += html;
+
+      }
+    }
   })
+})
 
 //remove button and action of wishlist
-document.querySelectorAll('.wishlist-remove-button').forEach((link)=>{
+document.querySelectorAll('.wishlist-remove-button').forEach((link) => {
 
 
-const productId=link.dataset.productId;
-    const productHtml=document.querySelector(`.js-wishlist-container-${productId}`)
+  const productId = link.dataset.productId;
+  const productHtml = document.querySelector(`.js-wishlist-container-${productId}`)
 
-        link.addEventListener('click',()=>{
-        removeFromWishlist(productId);
-        productHtml.remove();
+  link.addEventListener('click', () => {
+    removeFromWishlist(productId);
+    productHtml.remove();
 
 
-    })
+  })
 });
 
 
 // this is for giving id of selected product redirects to the secondpage 
-document.querySelectorAll('.wishlist-product-container').forEach((link)=>{
+document.querySelectorAll('.wishlist-product-container').forEach((link) => {
 
-  let productId=link.dataset.productId;
-link.addEventListener('click',()=>{
-selectedProduct(productId);
+  let productId = link.dataset.productId;
+  link.addEventListener('click', () => {
+    selectedProduct(productId);
+
+  })
+
 
 })
 
 
-})
-  
-  
 
 
 
@@ -199,17 +200,17 @@ export function removeFromFavourite(productId) {
 }
 
 //generating html for favourites
-let favouriteProductContainer=document.querySelector('.favourites-sub-container');
+let favouriteProductContainer = document.querySelector('.favourites-sub-container');
 
- 
-products.forEach((data)=>{
 
-  favourite.forEach((value)=>{
+products.forEach((data) => {
 
-    if(data.id==value.id){
-        
-        let html=''
-                  html+=`
+  favourite.forEach((value) => {
+
+    if (data.id == value.id) {
+
+      let html = ''
+      html += `
                   <div class="favourites-product-container js-favourites-product-container${data.id}" data-product-id=${data.id}>
                   <a class="" href="/selectedProductPage.html">
                   <div class="favourite-products">
@@ -227,50 +228,52 @@ products.forEach((data)=>{
                   </button>
                   
                   </div>`
-  
-  
-      if(favouriteProductContainer){
-  
-        favouriteProductContainer.innerHTML+=html;
- 
-      }}
-    }) 
+
+
+      if (favouriteProductContainer) {
+
+        favouriteProductContainer.innerHTML += html;
+
+      }
+    }
   })
+})
 
 //remove button and action of favourites
-document.querySelectorAll('.remove-from-favourite-button').forEach((link)=>{
+document.querySelectorAll('.remove-from-favourite-button').forEach((link) => {
 
 
-const productId=link.dataset.productId;
- 
-    const productHtml=document.querySelector(`.js-favourites-product-container${productId}`)
+  const productId = link.dataset.productId;
 
-        link.addEventListener('click',()=>{
-        removeFromFavourite(productId);
-        productHtml.remove();
+  const productHtml = document.querySelector(`.js-favourites-product-container${productId}`)
+
+  link.addEventListener('click', () => {
+    removeFromFavourite(productId);
+    productHtml.remove();
 
 
-    })
+  })
 
-    //colour
-    if(favouriteProductContainer){
-    setInterval(()=>{
-      const removeFromFavouriteButton=document.querySelector(`.js-remove-from-favourite-button-${productId}`);
-      if(favourite){
+  //colour
+  if (favouriteProductContainer) {
+    setInterval(() => {
+      const removeFromFavouriteButton = document.querySelector(`.js-remove-from-favourite-button-${productId}`);
+      if (favourite) {
         removeFromFavouriteButton.classList.add('added-To-Favourite')
       }
-    },1)}
+    }, 1)
+  }
 });
 
 
 // this is for giving id of selected product redirects to the secondpage 
-document.querySelectorAll('.favourites-product-container').forEach((link)=>{
+document.querySelectorAll('.favourites-product-container').forEach((link) => {
 
-  let productId=link.dataset.productId;
-link.addEventListener('click',()=>{
-selectedProduct(productId);
+  let productId = link.dataset.productId;
+  link.addEventListener('click', () => {
+    selectedProduct(productId);
 
-})
+  })
 
 
 });
@@ -278,8 +281,8 @@ selectedProduct(productId);
 
 
 
-  
-  
+
+
 
 
 

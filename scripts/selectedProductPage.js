@@ -129,7 +129,7 @@ function generatingHtml() {
   
   
     `;
-    //make sure the dom is present when going to another page else there will be null error
+    //make sure the html element is present when going to another page else there will be null error
     if (maincontainer) {
       maincontainer.innerHTML = newHTML;
 
@@ -161,7 +161,7 @@ function generatingHtml() {
 
 
 
-//button click function of select product pge favourite button
+//button click function of select product page favourite button
 document.querySelectorAll('.js-favourite-button').forEach((link) => {
 
   const productId = link.dataset.productId;
@@ -185,6 +185,37 @@ document.querySelectorAll('.js-favourite-button').forEach((link) => {
 
   });
 })
+
+
+//sharing button
+
+const currentUrl = window.location.href;
+
+const shareButton=document.querySelector('.share-button');
+const shareImage=document.querySelector('.share-image');
+
+if(maincontainer){
+
+  shareButton.addEventListener('click',()=>{
+ 
+    shareImage.classList.add('share-button-clicked-colour-change');
+    
+      if (navigator.share) {
+        navigator.share({
+          title: 'Book',
+          url:currentUrl,
+         
+        }).then(() => {
+          shareImage.classList.remove('share-button-clicked-colour-change')
+        })
+        .catch(console.error);
+      } else {
+       
+      }
+    
+    })
+}
+
 
 
 

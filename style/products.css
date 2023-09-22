@@ -74,7 +74,7 @@ padding: 4px;
 
 
 .product-container {
-  background-color: rgb(204, 203, 203);
+  background-color: rgb(236, 235, 235);
   width: 240px;
   height: 390px;
   padding: 8px;
@@ -127,7 +127,6 @@ padding: 4px;
   width: 24px;
   height: 24px;
   padding: 1px;
-  background-color: white;
   border: none;
   float: right;
   background: transparent;
@@ -137,7 +136,6 @@ padding: 4px;
   z-index: 1;
   top: 300px;
   right: 4px;
-  background-color: rgb(204, 203, 203);;
   
  
 
@@ -153,10 +151,12 @@ padding: 4px;
 }
 
 .added-To-Wishlist {
-  background-color: lawngreen;
+
+  filter: invert(35%) sepia(18%) saturate(2593%) hue-rotate(127deg) brightness(96%) contrast(93%) 
+
 }
 .added-To-Favourite {
-  background-color: red;
+  filter: invert(13%) sepia(98%) saturate(7488%) hue-rotate(6deg) brightness(105%) contrast(115%);
 }
 
 .removed-Form-WishList {
@@ -169,7 +169,8 @@ padding: 4px;
   margin-left: 8px;
   overflow: hidden;
   cursor: default;
-  box-shadow: 0px 2px rgba(0, 0, 0, 0.322)
+  box-shadow: 0px 2px rgba(0, 0, 0, 0.322);
+  margin-right: 18px;
 }
 
 .extra-info-container {
