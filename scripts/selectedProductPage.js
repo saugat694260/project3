@@ -2,6 +2,7 @@ import { products } from "../data/products.js";
 import { addToWishlist, removeFromWishlist, wishList, addToFavourite, removeFromFavourite, favourite } from "../features/sideBarItems.js";
 import { selectedChapter, productchapters } from "./chapterPage.js";
 
+
 const maincontainer = document.querySelector(".selectedProductPage-upper-container");
 let chapterList = document.querySelector(".chapter-list");
 
@@ -10,7 +11,7 @@ let chapterList = document.querySelector(".chapter-list");
 
 
 //selected product array
-export let selectedProductArray = JSON.parse(localStorage.getItem('selectedProductArray'));
+export let selectedProductArray = []//JSON.parse(localStorage.getItem('selectedProductArray'));
 savetostorage();
 //this function stores in local storage temporarly so the data will not be lost even after refresh
 export function savetostorage() {
@@ -194,7 +195,7 @@ const currentUrl = window.location.href;
 const shareButton=document.querySelector('.share-button');
 const shareImage=document.querySelector('.share-image');
 
-if(maincontainer){
+if(maincontainer && selectedProductArray.length<0){
 
   shareButton.addEventListener('click',()=>{
  
@@ -285,6 +286,8 @@ document.querySelectorAll('.chapters').forEach((link) => {
 
 
 })
+;
+
 
 
 

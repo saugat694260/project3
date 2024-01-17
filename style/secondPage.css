@@ -191,6 +191,10 @@ border-radius: 20px;
 margin: 24px;
 
 right: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+
 }
 
 .text-chapter,.text-review{
@@ -214,4 +218,62 @@ right: 0;
  
 filter: invert(1);
 
+}
+/*review*/
+.reviews-sub-container{
+  background-color: whitesmoke;
+  height: 80%;
+  width: 80%;
+  border-radius: 8vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.user-reviews{
+
+  background-color: antiquewhite;
+  width: 90%;
+  height: 80%;
+  margin-top: 20px;
+  overflow: auto;
+  
+}
+
+.user-reviews>p{
+  background-color: aquamarine;
+margin: 4px;
+padding: 2px
+;
+overflow-wrap:break-word;
+
+}
+.user-reviews>span{
+ 
+}
+.user-reviews>span+span{
+ 
+}
+
+.review-events-container{
+position: absolute;
+bottom: 10%;
+
+display: flex;
+align-items: center;
+}
+.input-review{
+height: 45px;
+width: 350px;
+
+}
+.post-review-button{
+  height: 50px;
+  width: 50px;
+  padding: 0;
+}
+.post-review-button-image{
+  height: 100%;
+  padding: 0;
 }

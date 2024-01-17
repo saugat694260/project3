@@ -5,6 +5,39 @@ import {  products} from "../data/products.js";
 export function formatCurrency(priceCents) {
   return(priceCents/100).toFixed(2);
 }
+
+//handles al dates
+import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
+
+//used for exporting only one 
+
+ export default dayjs;
+
+
+
+ //random number generator
+ //unique id for id
+
+ let randomNumberArray=[]//JSON.parse(localStorage.getItem('randomNumberArray'));
+ 
+console.log(randomNumberArray);
+ function storeGeneratedRandomNumber(){
+localStorage.setItem('randomNumberArray',JSON.stringify(randomNumberArray));
+
+ };
+
+console.log(RandomNumber());
+ export function RandomNumber() {
+
+  let id = "id" + Math.random().toString(16).slice(2);
+  
+  randomNumberArray.push({id});
+  storeGeneratedRandomNumber();
+return id;
+};
+
+
+
 //wishlist from extra.js
 //they are similar but i had to do it differently cause i had tp add seprately in button
 //extracts the data from product id from main page 
