@@ -3,8 +3,7 @@
 import dayjs from "../utils/utils.js";
 import {selectedProductArray} from "./selectedProductPage.js";
 import {  RandomNumber} from "../utils/utils.js";
-
-
+import{reviewDatabase,saveReviewsInDatabase}from"../data/reviewsStorage.js";
 
 //chapter-content
 const chaptermainContainer=document.querySelector(".chapter-main-container");
@@ -13,12 +12,57 @@ const chapterPageContainer=document.querySelector(".chapter-page-container");
   
   const nextButton=document.querySelector(".next-button");
   const previousButton=document.querySelector(".previous-button");
+
+  //review section
+  const userReviews=document.querySelector('.input-review');
+const userReviewsContainer=document.querySelector('.user-reviews');
+let postReview=document.querySelector('.post-review-button')
   
 
 let chaptersArray=JSON.parse(localStorage.getItem('chaptersArray'));
 let i=localStorage.getItem('i');
-let usersReviewArray=JSON.parse(localStorage.getItem('usersReviewArray'));
+let usersReviewArray=[]//JSON.parse(localStorage.getItem('usersReviewArray'));
 savetostorage();
+selectReviewFromDatabase();
+reviewsSectionHtml();
+
+//finds the chapter id and pushes the reviews in user review array
+export function selectReviewFromDatabase(id){
+
+reviewDatabase.forEach((data)=>{
+
+if(id===data.id && data.data!==null ){
+
+  usersReviewArray=data.data;
+  
+reviewsSectionHtml();
+savetostorage();
+};
+
+
+});
+
+ //check matching items
+
+ reviewDatabase.forEach((data)=>{
+  let matchingItem=[];
+  
+  if(data.id===data.id && usersReviewArray!==null){
+    matchingItem=data;
+  }
+  if(data.id===id && !matchingItem){
+    console.log(usersReviewArray);
+    data.data.push(usersReviewArray);
+    saveReviewsInDatabase();
+    usersReviewArray=[];
+  
+  
+  }
+  
+   });
+
+
+}
 
 //to store in local storage
 export function savetostorage() {
@@ -162,9 +206,7 @@ else{
 
 //takes input
 
-const userReviews=document.querySelector('.input-review');
-const userReviewsContainer=document.querySelector('.user-reviews');
-let postReview=document.querySelector('.post-review-button')
+
 
 
 
@@ -189,7 +231,7 @@ userReviews.addEventListener('keydown', (event) => {
 });
 
 ;
-console.log(usersReviewArray);
+
 
 
   //post a review
@@ -200,17 +242,22 @@ function uploadReviews(){
   
     if(userReviewValue && userReviewValue.trim()){
 
-      usersReviewArray.push({id:RandomNumber(),day:dayjs().format('DD/MM/YYYY'),time:dayjs().format('HH:MM:ss'),review:userReviewValue});
-    console.log(usersReviewArray);
+      usersReviewArray.push({id:RandomNumber(),day:dayjs().format('DD/MM/YYYY'),time:dayjs().format('HH:MM:ss'),review:userReviewValue});saveReviewsInDatabase();
     savetostorage();
     reviewsSectionHtml();
-      }
+      };
+      
 
   };
+
+ 
+
+ 
 reviewsSectionHtml();
 
   //change html
   function reviewsSectionHtml(){
+    console.log(reviewDatabase);
     let html;
     usersReviewArray.forEach((data)=>{
 
@@ -263,9 +310,15 @@ temp.push(data);
     
   })
  }
+ /**
+  
+let userReviewsMainArray=[];
 
 
- 
+
+  */
+
+ console.log(usersReviewArray);
 
 
 
