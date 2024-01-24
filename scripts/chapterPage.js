@@ -14,6 +14,8 @@ const chapterPageContainer=document.querySelector(".chapter-page-container");
   const previousButton=document.querySelector(".previous-button");
 
   //review section
+  
+  const reviewsContainer=document.querySelector(".reviews-container")
   const userReviews=document.querySelector('.input-review');
 const userReviewsContainer=document.querySelector('.user-reviews');
 let postReview=document.querySelector('.post-review-button')
@@ -25,48 +27,13 @@ let usersReviewArray=[]//JSON.parse(localStorage.getItem('usersReviewArray'));
 savetostorage();
 let reviewDatabaseId;//for knowing id of the selected product // take value outside of function
 
-selectReviewFromDatabase();
-reviewsSectionHtml();
 
-//finds the chapter id and pushes the reviews in user review array
-
-export function selectReviewFromDatabase(id){
-reviewDatabaseId=id;
-
-reviewDatabase.forEach((data)=>{
-
-if(id===data.id && data.data!==null ){
-
-    usersReviewArray=data.data;
-
-    reviewsSectionHtml();
-    savetostorage();
-};
-
-
-});
-
- //check matching items
-
-reviewDatabase.forEach((data)=>{
-let matchingItem=[];
-
-  if(data.id===data.id && usersReviewArray!==null){
-  matchingItem=data;
-  }
-  if(data.id===id && !matchingItem){
-    console.log(usersReviewArray);
-    data.data.push(usersReviewArray);
-    saveReviewsInDatabase();
-    usersReviewArray=[];
-
-
-  }
-
-  });
-
-
+if(reviewsContainer){
+  reviewsSectionHtml();
+  selectReviewFromDatabase();
 }
+
+
 
 //to store in local storage
 export function savetostorage() {
@@ -198,19 +165,68 @@ else{
 
 }
 
+};
+
+
+
+
+
+
+//reviews section
+//finds the chapter id and pushes the reviews in user review array
+
+export function selectReviewFromDatabase(id){
+
+
+  reviewDatabaseId=id;
+
+
+  reviewDatabase.forEach((data)=>{
+  
+  if(id===data.id && data.data!==null ){
+  
+      usersReviewArray=data.data;
+  
+      reviewsSectionHtml();
+      savetostorage();
+  };
+  
+  
+  });
+  
+   //check matching items
+  
+  reviewDatabase.forEach((data)=>{
+  let matchingItem=[];
+  
+    if(data.id===data.id && usersReviewArray!==null){
+    matchingItem=data;
+    }
+    if(data.id===id && !matchingItem){
+      console.log(usersReviewArray);
+      data.data.push(usersReviewArray);
+      saveReviewsInDatabase();
+      usersReviewArray=[];
+  
+  
+    }
+  
+    });
 }
 
 
 
 
 
-//post
+
+
+
+if(reviewsContainer){
+  //post
  
 //post by button
 postReview.addEventListener('click',()=>{
-      uploadReviews();
-      console.log('hi');
-      console.log(reviewDatabase);
+  uploadReviews();
 });
 
 
@@ -218,14 +234,13 @@ postReview.addEventListener('click',()=>{
 
 //active node element is used to know whether the area is active or not
 userReviews.addEventListener('keydown', (event) => {
-      if (event.key == "Enter" && document.activeElement.nodeName == 'INPUT') {
-        
-          uploadReviews();
-      
-      }
-});
-
-;
+  if (event.key == "Enter" && document.activeElement.nodeName == 'INPUT') {
+    
+      uploadReviews();
+  
+  }
+})
+};
 
 
 
@@ -245,9 +260,8 @@ function uploadReviews(){
 
   };
 
-reviewsSectionHtml();
-
-  //change html
+ 
+    //change html
   function reviewsSectionHtml(){
     let html;
     usersReviewArray.forEach((data)=>{
@@ -259,11 +273,17 @@ reviewsSectionHtml();
           <span class='review-delete-js'data-review-id=${data.id}>delete</span>
           <p>${data.review}</p>
           </div>`;
-          userReviews.value='';
+          
+          if(reviewsContainer){
+            userReviews.value='';
+          }
           
         });
+       
 
-    userReviewsContainer.innerHTML=html;
+    if(reviewsContainer){
+      userReviewsContainer.innerHTML=html;
+    }
 
 //delete reviews
 let deleteReviewElement=document.querySelectorAll('.review-delete-js');
@@ -285,6 +305,7 @@ let deleteReviewElement=document.querySelectorAll('.review-delete-js');
 
 }
 ;
+  
   
 
 
@@ -319,7 +340,7 @@ let temp=[];
   };
 
 
-
+//
 
 
 
