@@ -1,7 +1,7 @@
 
 
 import dayjs from "../utils/utils.js";
-import {selectedProductArray} from "./selectedProductPage.js";
+import {selectedProduct, selectedProductArray} from "./selectedProductPage.js";
 import {  RandomNumber} from "../utils/utils.js";
 import{reviewDatabase,saveReviewsInDatabase}from"../data/reviewsStorage.js";
 
@@ -257,7 +257,6 @@ reviewsSectionHtml();
 
   //change html
   function reviewsSectionHtml(){
-    console.log(reviewDatabase);
     let html;
     usersReviewArray.forEach((data)=>{
 
@@ -275,7 +274,9 @@ reviewsSectionHtml();
     userReviewsContainer.innerHTML=html;
 
 //delete reviews
-document.querySelectorAll('.review-delete-js').forEach((link)=>{
+let deleteReviewElement=document.querySelectorAll('.review-delete-js');
+
+deleteReviewElement.forEach((link)=>{
 
   const reviewId=link.dataset.reviewId;
   const reviewContainer=document.querySelector(`.review-container-js-${reviewId}`)
@@ -295,30 +296,46 @@ reviewContainer.remove();
   
 
   //review delete
- function removeUsersReview(id){
+ export function removeUsersReview(id){
   let temp=[];
-  usersReviewArray.forEach((data)=>{
+  reviewDatabase.forEach((reviewDatabaseData)=>{
 
-    if(id!==data.id){
-temp.push(data);
+   
+   reviewDatabaseData.data.forEach((data)=>{
 
+    if(id!==data.id && reviewDatabase.id!==2){
+     
+      temp.push(data);
+          };
+          if(temp){
+            usersReviewArray=temp;
+reviewDatabaseData.data=usersReviewArray;
+console.log(reviewDatabaseData.data);
+      saveReviewsInDatabase();
+          }
+            
+   });
+   console.log(reviewDatabaseData.data);
+  
+  });
 
-    };
-    usersReviewArray=temp;
-    savetostorage();
-  console.log(usersReviewArray);
-    
-  })
- }
+  console.log(reviewDatabase);
+
+ 
+ };
+ 
+ 
  /**
   
-let userReviewsMainArray=[];
+
+
+ 
+ })
 
 
 
   */
 
- console.log(usersReviewArray);
 
 
 
