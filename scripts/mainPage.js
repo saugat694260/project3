@@ -95,6 +95,7 @@ document.querySelectorAll('.js-product-container-link').forEach((link) => {
   const productId = link.dataset.productId;
   link.addEventListener('click', () => {
     selectedProduct(productId);
+
   });
 })
 

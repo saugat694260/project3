@@ -1,7 +1,7 @@
 import { products } from "../data/products.js";
 import { addToWishlist, removeFromWishlist, wishList, addToFavourite, removeFromFavourite, favourite } from "../features/sideBarItems.js";
 import { selectedChapter, productchapters } from "./chapterPage.js";
-import {selectReviewFromDatabase,removeUsersReview}from"../scripts/chapterPage.js"
+import {selectReviewFromDatabase}from"../scripts/chapterPage.js"
 
 
 const maincontainer = document.querySelector(".selectedProductPage-upper-container");
@@ -12,7 +12,7 @@ let chapterList = document.querySelector(".chapter-list");
 
 
 //selected product array
-export let selectedProductArray = []//JSON.parse(localStorage.getItem('selectedProductArray'));
+export let selectedProductArray = JSON.parse(localStorage.getItem('selectedProductArray'));
 savetostorage();
 //this function stores in local storage temporarly so the data will not be lost even after refresh
 export function savetostorage() {
@@ -20,11 +20,10 @@ export function savetostorage() {
 }
 
 
-selectedProduct(1);
 
 //this function takes the id and adds the data for the selected container only
 //takes the data pushes in to in to array and becomes empty again so it can only give one array to new array if itself is not empty ..the new array is stored in local storage so it wont dissapear
-
+selectedProduct(2)
 export function selectedProduct(productId) {
 
 

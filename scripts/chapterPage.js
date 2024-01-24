@@ -23,20 +23,24 @@ let chaptersArray=JSON.parse(localStorage.getItem('chaptersArray'));
 let i=localStorage.getItem('i');
 let usersReviewArray=[]//JSON.parse(localStorage.getItem('usersReviewArray'));
 savetostorage();
+let reviewDatabaseId;//for knowing id of the selected product // take value outside of function
+
 selectReviewFromDatabase();
 reviewsSectionHtml();
 
 //finds the chapter id and pushes the reviews in user review array
+
 export function selectReviewFromDatabase(id){
+reviewDatabaseId=id;
 
 reviewDatabase.forEach((data)=>{
 
 if(id===data.id && data.data!==null ){
 
-  usersReviewArray=data.data;
-  
-reviewsSectionHtml();
-savetostorage();
+    usersReviewArray=data.data;
+
+    reviewsSectionHtml();
+    savetostorage();
 };
 
 
@@ -44,22 +48,22 @@ savetostorage();
 
  //check matching items
 
- reviewDatabase.forEach((data)=>{
-  let matchingItem=[];
-  
+reviewDatabase.forEach((data)=>{
+let matchingItem=[];
+
   if(data.id===data.id && usersReviewArray!==null){
-    matchingItem=data;
+  matchingItem=data;
   }
   if(data.id===id && !matchingItem){
     console.log(usersReviewArray);
     data.data.push(usersReviewArray);
     saveReviewsInDatabase();
     usersReviewArray=[];
-  
-  
+
+
   }
-  
-   });
+
+  });
 
 
 }
@@ -197,16 +201,6 @@ else{
 }
 
 
-//function review
-
-
-
-//reviews section
-
-
-//takes input
-
-
 
 
 
@@ -214,8 +208,9 @@ else{
  
 //post by button
 postReview.addEventListener('click',()=>{
-  uploadReviews();
-  console.log('hi');
+      uploadReviews();
+      console.log('hi');
+      console.log(reviewDatabase);
 });
 
 
@@ -242,17 +237,14 @@ function uploadReviews(){
   
     if(userReviewValue && userReviewValue.trim()){
 
-      usersReviewArray.push({id:RandomNumber(),day:dayjs().format('DD/MM/YYYY'),time:dayjs().format('HH:MM:ss'),review:userReviewValue});saveReviewsInDatabase();
-    savetostorage();
-    reviewsSectionHtml();
+        usersReviewArray.push({id:RandomNumber(),day:dayjs().format('DD/MM/YYYY'),time:dayjs().format('HH:MM:ss'),review:userReviewValue});saveReviewsInDatabase();
+      savetostorage();
+      reviewsSectionHtml();
       };
       
 
   };
 
- 
-
- 
 reviewsSectionHtml();
 
   //change html
@@ -276,63 +268,55 @@ reviewsSectionHtml();
 //delete reviews
 let deleteReviewElement=document.querySelectorAll('.review-delete-js');
 
-deleteReviewElement.forEach((link)=>{
+    deleteReviewElement.forEach((link)=>{
 
-  const reviewId=link.dataset.reviewId;
-  const reviewContainer=document.querySelector(`.review-container-js-${reviewId}`)
-
-
-link.addEventListener('click',()=>{
-
-  removeUsersReview(reviewId);
-reviewContainer.remove();
-})
+        const reviewId=link.dataset.reviewId;
+        const reviewContainer=document.querySelector(`.review-container-js-${reviewId}`)
 
 
-    })
+        link.addEventListener('click',()=>{
+            deleteReviewFromDatabase(reviewId);
 
-  }
-  ;
-  
+            reviewContainer.remove();
+        });
 
-  //review delete
- export function removeUsersReview(id){
-  let temp=[];
-  reviewDatabase.forEach((reviewDatabaseData)=>{
 
-   
-   reviewDatabaseData.data.forEach((data)=>{
+      });
 
-    if(id!==data.id && reviewDatabase.id!==2){
-     
-      temp.push(data);
-      usersReviewArray=temp;
-reviewDatabaseData.data=usersReviewArray;
-console.log(reviewDatabaseData.data);
-      saveReviewsInDatabase();
-          };
-           
-   });
-   console.log(reviewDatabaseData.data);
-  
-  });
-
-  console.log(reviewDatabase);
-
- 
- };
- 
- 
- /**
+}
+;
   
 
 
- 
- })
+//delete review from database
+function deleteReviewFromDatabase(id){
+
+let temp=[];
+    //select required database id
+    reviewDatabase.forEach((databaseData)=>{
+
+        if(databaseData.id===reviewDatabaseId){
+
+            //select data from userreviewarray and exclude the data that matches id
+            usersReviewArray.forEach((data)=>{
 
 
+            if(id!==data.id){
 
-  */
+            temp.push(data)
+
+            };
+                //put the temp data in user review array
+                usersReviewArray=temp;
+                //putting the data in review dataBase
+                databaseData.data=usersReviewArray;
+                saveReviewsInDatabase();
+
+
+            });
+        };
+    });
+  };
 
 
 
