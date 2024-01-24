@@ -306,14 +306,12 @@ reviewContainer.remove();
     if(id!==data.id && reviewDatabase.id!==2){
      
       temp.push(data);
-          };
-          if(temp){
-            usersReviewArray=temp;
+      usersReviewArray=temp;
 reviewDatabaseData.data=usersReviewArray;
 console.log(reviewDatabaseData.data);
       saveReviewsInDatabase();
-          }
-            
+          };
+           
    });
    console.log(reviewDatabaseData.data);
   

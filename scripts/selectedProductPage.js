@@ -20,7 +20,7 @@ export function savetostorage() {
 }
 
 
-selectedProduct(2);
+selectedProduct(1);
 
 //this function takes the id and adds the data for the selected container only
 //takes the data pushes in to in to array and becomes empty again so it can only give one array to new array if itself is not empty ..the new array is stored in local storage so it wont dissapear
