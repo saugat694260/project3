@@ -21,9 +21,11 @@ export function savetostorage() {
 
 
 //gives id of product to select reviews of specific id
-selectedProductArray.forEach((data)=>{
-  selectReviewFromDatabase(data.id);
-})
+if(maincontainer){
+  selectedProductArray.forEach((data)=>{
+    selectReviewFromDatabase(data.id);
+  })
+}
 
 //this function takes the id and adds the data for the selected container only
 //takes the data pushes in to in to array and becomes empty again so it can only give one array to new array if itself is not empty ..the new array is stored in local storage so it wont dissapear
