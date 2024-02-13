@@ -12,7 +12,7 @@ let chapterList = document.querySelector(".chapter-list");
 
 
 //selected product array
-export let selectedProductArray = JSON.parse(localStorage.getItem('selectedProductArray'));
+export let selectedProductArray =[]//JSON.parse(localStorage.getItem('selectedProductArray'));
 savetostorage();
 //this function stores in local storage temporarly so the data will not be lost even after refresh
 export function savetostorage() {
