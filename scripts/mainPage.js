@@ -1,4 +1,4 @@
-import { products } from "../data/products.js";
+import { products} from "../data/products.js";
 import { selectedProduct } from "./selectedProductPage.js";
 import { addToWishlist, removeFromWishlist, savetostorage, wishList } from "../features/sideBarItems.js";
 import { extractDataFromIdForAdding, extractDataFromIdForRemoving, formatCurrency } from "../utils/utils.js";
@@ -30,7 +30,7 @@ products.forEach((data) => {
 
 <div class="image-container">
 <div class="price-Container js-price-container-${data.id}"></div>
-    <img class="product-image" src="${data.image}">
+    <img class="product-image" src="${data.getProductImage()}">
     
     <span class="rank-container">#${data.ratings.rank}</span>
 </div>
@@ -79,7 +79,7 @@ function createPrices() {
     if (data.priceCents) {
 
       const priceContainer = document.querySelector(`.js-price-container-${data.id}`);
-      priceContainer.innerHTML = `Price:${formatCurrency(data.priceCents)}$`
+      priceContainer.innerHTML = `Price:$${data.getPrice()}`
       priceContainer.classList.add('js-price-Container')
 
     }
@@ -115,7 +115,7 @@ document.querySelectorAll('.js-wish-list-button-link').forEach((link) => {
 
       removeFromWishlist(productId)
       wishListButton.classList.remove('added-To-Wishlist');
-      console.log(wishList);
+      
 
     }
     else {

@@ -1,9 +1,57 @@
+
+import {formatCurrency } from "../utils/utils.js";
+export class Product{
+  id;
+  title;
+  author;
+  image;
+  status;
+  genre;
+  chapters;
+  ratings;
+  description;
+  keywords;
+  priceCents;
+
+  //constructor
+  constructor(productDetails){
+
+this.id=productDetails.id;
+this.title=productDetails.title;
+this.author=productDetails.author;
+this.image=productDetails.image;
+this.status=productDetails.status;
+this.genre=productDetails.genre;
+this.chapters=productDetails.chapters;
+this.ratings=productDetails.ratings;
+this.description=productDetails.description;
+this.keywords=productDetails.keywords;
+this.priceCents=productDetails.priceCents;
+
+
+  };
+
+  getProductImage(){
+
+return `/images/${this.image}`;
+
+  }
+  getPrice(){
+   return `${formatCurrency(this.priceCents)}`
+  }
+  
+
+
+
+}
+
+
 export let products=[
   {
     id:1,
     title:"kung fu",
     author:"dannelialet",
-    image:"/images/018.jpg",
+    image:"018.jpg",
     status:"ongoing",
     genre:"horror",
     chapters:[
@@ -35,7 +83,7 @@ chapterStory:
   {
     id:2,
     title:"fuka ku",
-    image:"/images/028.jpg",
+    image:"028.jpg",
     author:"dannelialet",
     status:"ongoing",
     genre:"horror",
@@ -62,7 +110,7 @@ chapterStory:
   {
     id:3,
     title:"im coming through",
-    image:"/images/18191ff4986cb63cfe5e1c0a3fd2b04f.jpg",
+    image:"18191ff4986cb63cfe5e1c0a3fd2b04f.jpg",
     author:"morning",
     status:"ongoing",
     genre:"horror",
@@ -90,7 +138,7 @@ chapterStory:
   {
     id:4,
     title:"what was that",
-    image:"/images/35-1.jpg",
+    image:"35-1.jpg",
     author:"kaido",
     status:"ongoing",
     genre:"horror",
@@ -103,6 +151,7 @@ chapterStory:
       
           ],
     description:"this story isfuka ka",
+    priceCents:3000000,
     ratings:{
       rank:1,
       count:3
@@ -117,7 +166,7 @@ chapterStory:
   {
     id:5,
     title:"monkey oh yeah",
-    image:"/images/788771a65d75c063b2c056c1d5992f58.jpg",
+    image:"788771a65d75c063b2c056c1d5992f58.jpg",
     author:"novacane",
     status:"ongoing",
     genre:"horror",
@@ -145,7 +194,7 @@ chapterStory:
   {
     id:6,
     title:"non non",
-    image:"/images/817.png",
+    image:"817.png",
     author:"damn dannel",
     status:"ongoing",
     genre:"horror",
@@ -174,7 +223,7 @@ chapterStory:
   {
     id:7,
     title:"kore de sode",
-    image:"/images/AIH_DIO (1).png",
+    image:"AIH_DIO (1).png",
     author:"dannel",
     status:"ongoing",
     genre:"horror",
@@ -228,7 +277,18 @@ chapterStory:
     ]
 
   }
-]
+].map((productDetails)=>{
+return new Product(productDetails);
+});
+products.forEach((value)=>{
+
+});
+
+
+
+//map basically loops through array and runs a function in each value
+//each object will be looped and a function willl run
+//.map creates new array
 
 //to randomize the product
 /**

@@ -104,7 +104,7 @@ function generatingHtml() {
     
     <div class="image-container">
       <div class="image">
-        <img class="selected-product-image" src="${data.image}">
+        <img class="selected-product-image" src="./images/${data.image}">
       </div>
     
       <div class="options-container">

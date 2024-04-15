@@ -21,9 +21,9 @@ const userReviewsContainer=document.querySelector('.user-reviews');
 let postReview=document.querySelector('.post-review-button')
   
 
-let chaptersArray=JSON.parse(localStorage.getItem('chaptersArray'));
+let chaptersArray=[]//JSON.parse(localStorage.getItem('chaptersArray'));
 let i=localStorage.getItem('i');
-let usersReviewArray=[]//JSON.parse(localStorage.getItem('usersReviewArray'));
+let usersReviewArray=JSON.parse(localStorage.getItem('usersReviewArray'));
 savetostorage();
 let reviewDatabaseId;//for knowing id of the selected product // take value outside of function
 
