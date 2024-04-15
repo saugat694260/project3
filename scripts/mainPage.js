@@ -79,7 +79,7 @@ function createPrices() {
     if (data.priceCents) {
 
       const priceContainer = document.querySelector(`.js-price-container-${data.id}`);
-      priceContainer.innerHTML = `Price:$${data.getPrice()}`
+      priceContainer.innerHTML = data.getPrice();
       priceContainer.classList.add('js-price-Container')
 
     }

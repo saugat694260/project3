@@ -11,7 +11,7 @@ export class Product{
   ratings;
   description;
   keywords;
-  priceCents;
+ 
 
   //constructor
   constructor(productDetails){
@@ -36,15 +36,35 @@ this.priceCents=productDetails.priceCents;
 return `/images/${this.image}`;
 
   }
+  //add this method in this class cuz while running all class error will occour
   getPrice(){
-   return `${formatCurrency(this.priceCents)}`
-  }
+  return '';
+    
+   }
+  
   
 
 
 
 }
+//products containing price 
+//inherit to get all data from class
+class Premium extends Product
+{
+  priceCents;
+  constructor(productDetails){
+    //super is used to call parent constructor
+    super(productDetails);
+    this.priceCents=productDetails.priceCents;
 
+  }
+  //@method override
+  getPrice(){
+    return `Price:$${formatCurrency(this.priceCents)}`
+    
+   }
+
+}
 
 export let products=[
   {
@@ -278,6 +298,9 @@ chapterStory:
 
   }
 ].map((productDetails)=>{
+  if(productDetails.priceCents){
+    return new Premium(productDetails);
+  }
 return new Product(productDetails);
 });
 products.forEach((value)=>{
